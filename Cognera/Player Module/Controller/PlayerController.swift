@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 
 class PlayerController {
+    
     static let shared  = PlayerController()
     
     var player: AVPlayer?
@@ -20,6 +21,6 @@ class PlayerController {
     
     func playItem(at url: URL) {
         let item = AVPlayerItem(url: url)
-        player = AVPlayer(playerItem: item)
+        player?.replaceCurrentItem(with: item)
     }
 }

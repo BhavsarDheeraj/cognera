@@ -33,6 +33,9 @@ class PlayerViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
+        
+        PlayerController.shared.player!.removeObserver(self, forKeyPath: #keyPath(AVPlayer.status))
+        PlayerController.shared.player!.removeObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.status))
     }
     
     //MARK:- Setup Player
@@ -69,7 +72,7 @@ class PlayerViewController: BaseViewController {
             if newStatus == .failed {
                 showDialog(title: "Error", actionTitle: "Okay", message:ErrorMessages.fileError)
                 playButton.isEnabled = false
-                indicator.isHidden = false
+                indicator.isHidden = true
                 debugPrint("Error: \(String(describing: PlayerController.shared.player?.currentItem?.error?.localizedDescription)), error: \(String(describing: PlayerController.shared.player?.currentItem?.error))")
             } else if newStatus == .readyToPlay {
                 indicator.isHidden = true
