@@ -28,14 +28,14 @@ class PlayerViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: PlayerController.shared.player?.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: PlayerController.shared.player.currentItem)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
         
-        PlayerController.shared.player!.removeObserver(self, forKeyPath: #keyPath(AVPlayer.status))
-        PlayerController.shared.player!.removeObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.status))
+        PlayerController.shared.player.removeObserver(self, forKeyPath: #keyPath(AVPlayer.status))
+        PlayerController.shared.player.removeObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.status))
     }
     
     //MARK:- Setup Player
@@ -44,11 +44,11 @@ class PlayerViewController: BaseViewController {
             
             PlayerController.shared.playItem(at: url)
             
-            PlayerController.shared.player!.addObserver(self, forKeyPath: #keyPath(AVPlayer.status), options: [.new, .initial], context: nil)
-            PlayerController.shared.player!.addObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.status), options:[.new, .initial], context: nil)
+            PlayerController.shared.player.addObserver(self, forKeyPath: #keyPath(AVPlayer.status), options: [.new, .initial], context: nil)
+            PlayerController.shared.player.addObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.status), options:[.new, .initial], context: nil)
             
-            NotificationCenter.default.addObserver(self, selector:#selector(newErrorLogEntry(_:)), name: .AVPlayerItemNewErrorLogEntry, object: PlayerController.shared.player!.currentItem)
-            NotificationCenter.default.addObserver(self, selector:#selector(failedToPlayToEndTime(_:)), name: .AVPlayerItemFailedToPlayToEndTime, object: PlayerController.shared.player!.currentItem)
+            NotificationCenter.default.addObserver(self, selector:#selector(newErrorLogEntry(_:)), name: .AVPlayerItemNewErrorLogEntry, object: PlayerController.shared.player.currentItem)
+            NotificationCenter.default.addObserver(self, selector:#selector(failedToPlayToEndTime(_:)), name: .AVPlayerItemFailedToPlayToEndTime, object: PlayerController.shared.player.currentItem)
         } else {
             playButton.isEnabled = false
         }
@@ -73,7 +73,7 @@ class PlayerViewController: BaseViewController {
                 showDialog(title: "Error", actionTitle: "Okay", message:ErrorMessages.fileError)
                 playButton.isEnabled = false
                 indicator.isHidden = true
-                debugPrint("Error: \(String(describing: PlayerController.shared.player?.currentItem?.error?.localizedDescription)), error: \(String(describing: PlayerController.shared.player?.currentItem?.error))")
+                debugPrint("Error: \(String(describing: PlayerController.shared.player.currentItem?.error?.localizedDescription)), error: \(String(describing: PlayerController.shared.player.currentItem?.error))")
             } else if newStatus == .readyToPlay {
                 indicator.isHidden = true
             }
@@ -100,11 +100,11 @@ class PlayerViewController: BaseViewController {
 
     //MARK:- IBActions
     @IBAction func playTapped(_ sender: UIButton) {
-        if PlayerController.shared.player!.rate == 0 {
-            PlayerController.shared.player!.play()
+        if PlayerController.shared.player.rate == 0 {
+            PlayerController.shared.player.play()
             playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         } else {
-            PlayerController.shared.player!.pause()
+            PlayerController.shared.player.pause()
             playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         }
     }

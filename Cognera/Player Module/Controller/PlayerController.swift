@@ -13,14 +13,10 @@ class PlayerController {
     
     static let shared  = PlayerController()
     
-    var player: AVPlayer?
-    
-    init() {
-        player = AVPlayer()
-    }
+    var player = AVPlayer()
     
     func playItem(at url: URL) {
         let item = AVPlayerItem(url: url)
-        player?.replaceCurrentItem(with: item)
+        player.replaceCurrentItem(with: item)
     }
 }
