@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LqL-Mm-vW9">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Play-->
+        <scene sceneID="2oo-XI-ga9">
+            <objects>
+                <viewController storyboardIdentifier="PlayerViewController" title="Play" id="Ydg-70-nEz" customClass="PlayerViewController" customModule="Cognera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="edw-JA-gGO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCe-eX-fRn">
+                                <rect key="frame" x="164.5" y="677" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="KQF-pp-2e9"/>
+                                    <constraint firstAttribute="width" constant="85" id="pSf-CX-l2I"/>
+                                </constraints>
+                                <state key="normal" image="play"/>
+                                <connections>
+                                    <action selector="playTapped:" destination="Ydg-70-nEz" eventType="touchUpInside" id="dRD-LJ-hRO"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="su5-Hs-8AA">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="su5-Hs-8AA" firstAttribute="centerX" secondItem="edw-JA-gGO" secondAttribute="centerX" id="57v-ZK-DT2"/>
+                            <constraint firstItem="fCe-eX-fRn" firstAttribute="centerX" secondItem="edw-JA-gGO" secondAttribute="centerX" id="Lh5-qg-aMl"/>
+                            <constraint firstItem="MuO-eY-FaL" firstAttribute="bottom" secondItem="fCe-eX-fRn" secondAttribute="bottom" constant="100" id="RpK-co-4A5"/>
+                            <constraint firstItem="su5-Hs-8AA" firstAttribute="centerY" secondItem="edw-JA-gGO" secondAttribute="centerY" id="Sa8-aY-gFG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MuO-eY-FaL"/>
+                    </view>
+                    <connections>
+                        <outlet property="indicator" destination="su5-Hs-8AA" id="s3f-25-TJm"/>
+                        <outlet property="playButton" destination="fCe-eX-fRn" id="I4o-AX-QZu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylC-CD-kDx" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951.20000000000005" y="22.906403940886701"/>
+        </scene>
+        <!--Files-->
+        <scene sceneID="LeU-9B-bRk">
+            <objects>
+                <viewController id="hWT-vf-Wzi" customClass="FilesViewController" customModule="Cognera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b0n-l6-xaG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="M52-kP-3wx">
+                                <rect key="frame" x="32" y="387.5" width="350" height="121.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="SPa-Km-pNA">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="121.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjC-hR-uyR">
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="85"/>
+                                                <state key="normal" image="picture"/>
+                                                <connections>
+                                                    <action selector="didTapImageButton:" destination="hWT-vf-Wzi" eventType="touchUpInside" id="kbK-mq-ush"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcj-LF-1JV">
+                                                <rect key="frame" x="0.0" y="101" width="167" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="0Kk-LO-8Gd">
+                                        <rect key="frame" x="183" y="0.0" width="167" height="121.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fY-zc-KOV">
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="85"/>
+                                                <state key="normal" image="music-player"/>
+                                                <connections>
+                                                    <action selector="didTapAudioButton:" destination="hWT-vf-Wzi" eventType="touchUpInside" id="dmm-Jt-qci"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Audio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRu-oQ-bYp">
+                                                <rect key="frame" x="0.0" y="101" width="167" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M52-kP-3wx" firstAttribute="centerX" secondItem="b0n-l6-xaG" secondAttribute="centerX" id="OIs-2Y-oUf"/>
+                            <constraint firstItem="M52-kP-3wx" firstAttribute="centerY" secondItem="b0n-l6-xaG" secondAttribute="centerY" id="VyV-ai-stO"/>
+                            <constraint firstItem="M52-kP-3wx" firstAttribute="leading" secondItem="C0B-qf-qTa" secondAttribute="leading" constant="32" id="iEF-A7-25Y"/>
+                            <constraint firstItem="C0B-qf-qTa" firstAttribute="trailing" secondItem="M52-kP-3wx" secondAttribute="trailing" constant="32" id="vJH-c8-MA9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="C0B-qf-qTa"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Files" id="MyS-dd-0Jk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dw1-bH-sDc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="22.906403940886701"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FBR-xp-fAb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LqL-Mm-vW9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1fl-QV-K8Q">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hWT-vf-Wzi" kind="relationship" relationship="rootViewController" id="UaQ-0c-j4R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Krq-0p-tt6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-802.39999999999998" y="22.906403940886701"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="music-player" width="85" height="85"/>
+        <image name="picture" width="85" height="85"/>
+        <image name="play" width="85" height="85"/>
+    </resources>
+</document>

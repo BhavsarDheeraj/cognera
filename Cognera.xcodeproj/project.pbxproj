@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		584F245F22AA762700B4876C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F245E22AA762700B4876C /* AppDelegate.swift */; };
-		584F246122AA762700B4876C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F246022AA762700B4876C /* ViewController.swift */; };
-		584F246422AA762700B4876C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584F246222AA762700B4876C /* Main.storyboard */; };
-		584F246622AA762900B4876C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 584F246522AA762900B4876C /* Assets.xcassets */; };
+		584F246122AA762700B4876C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F246022AA762700B4876C /* PlayerViewController.swift */; };
 		584F246922AA762900B4876C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 584F246722AA762900B4876C /* LaunchScreen.storyboard */; };
+		584F247122AB7E5900B4876C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F247022AB7E5900B4876C /* BaseViewController.swift */; };
+		587D6E9922ABAC8C00D5BCBE /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587D6E9822ABAC8C00D5BCBE /* Player.storyboard */; };
+		587D6E9D22ABAD6D00D5BCBE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D6E9C22ABAD6D00D5BCBE /* Constants.swift */; };
+		587D6E9F22ABB11400D5BCBE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D6E9E22ABB11400D5BCBE /* Enums.swift */; };
+		5881A51122AB84CA00D2960E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5881A51022AB84CA00D2960E /* Assets.xcassets */; };
+		5881A51322AB88E500D2960E /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5881A51222AB88E500D2960E /* FilesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		584F245B22AA762700B4876C /* Cognera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cognera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		584F245E22AA762700B4876C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		584F246022AA762700B4876C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		584F246322AA762700B4876C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		584F246522AA762900B4876C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		584F246022AA762700B4876C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		584F246822AA762900B4876C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		584F246A22AA762900B4876C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		584F247022AB7E5900B4876C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		587D6E9822ABAC8C00D5BCBE /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		587D6E9C22ABAD6D00D5BCBE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		587D6E9E22ABB11400D5BCBE /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		5881A51022AB84CA00D2960E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5881A51222AB88E500D2960E /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +62,42 @@
 		584F245D22AA762700B4876C /* Cognera */ = {
 			isa = PBXGroup;
 			children = (
-				584F245E22AA762700B4876C /* AppDelegate.swift */,
-				584F246022AA762700B4876C /* ViewController.swift */,
-				584F246222AA762700B4876C /* Main.storyboard */,
-				584F246522AA762900B4876C /* Assets.xcassets */,
-				584F246722AA762900B4876C /* LaunchScreen.storyboard */,
+				586010B822ABAC570061D765 /* Player Module */,
+				587D6E9A22ABACA500D5BCBE /* Supporting Files */,
+				5881A51022AB84CA00D2960E /* Assets.xcassets */,
 				584F246A22AA762900B4876C /* Info.plist */,
 			);
 			path = Cognera;
+			sourceTree = "<group>";
+		};
+		586010B822ABAC570061D765 /* Player Module */ = {
+			isa = PBXGroup;
+			children = (
+				587D6E9B22ABAD4D00D5BCBE /* View Controllers */,
+				587D6E9822ABAC8C00D5BCBE /* Player.storyboard */,
+			);
+			path = "Player Module";
+			sourceTree = "<group>";
+		};
+		587D6E9A22ABACA500D5BCBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				584F245E22AA762700B4876C /* AppDelegate.swift */,
+				584F247022AB7E5900B4876C /* BaseViewController.swift */,
+				587D6E9C22ABAD6D00D5BCBE /* Constants.swift */,
+				587D6E9E22ABB11400D5BCBE /* Enums.swift */,
+				584F246722AA762900B4876C /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		587D6E9B22ABAD4D00D5BCBE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5881A51222AB88E500D2960E /* FilesViewController.swift */,
+				584F246022AA762700B4876C /* PlayerViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +132,11 @@
 				TargetAttributes = {
 					584F245A22AA762700B4876C = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -123,8 +164,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				584F246922AA762900B4876C /* LaunchScreen.storyboard in Resources */,
-				584F246622AA762900B4876C /* Assets.xcassets in Resources */,
-				584F246422AA762700B4876C /* Main.storyboard in Resources */,
+				587D6E9922ABAC8C00D5BCBE /* Player.storyboard in Resources */,
+				5881A51122AB84CA00D2960E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +176,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				584F246122AA762700B4876C /* ViewController.swift in Sources */,
+				587D6E9D22ABAD6D00D5BCBE /* Constants.swift in Sources */,
+				584F246122AA762700B4876C /* PlayerViewController.swift in Sources */,
 				584F245F22AA762700B4876C /* AppDelegate.swift in Sources */,
+				5881A51322AB88E500D2960E /* FilesViewController.swift in Sources */,
+				587D6E9F22ABB11400D5BCBE /* Enums.swift in Sources */,
+				584F247122AB7E5900B4876C /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		584F246222AA762700B4876C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				584F246322AA762700B4876C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		584F246722AA762900B4876C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,8 +319,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KNF2N245S4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Cognera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -291,6 +329,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.dheerajbhavsar.Cognera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -300,8 +339,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KNF2N245S4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Cognera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,6 +349,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.dheerajbhavsar.Cognera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
