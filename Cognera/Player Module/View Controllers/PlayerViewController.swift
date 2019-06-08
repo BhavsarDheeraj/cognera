@@ -21,8 +21,6 @@ class PlayerViewController: BaseViewController {
     
     //MARK:- Properties
     var itemUrl: URL?
-    var item: AVPlayerItem?
-    var player: AVPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +28,7 @@ class PlayerViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: item)
+        NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: PlayerController.shared.player?.currentItem)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,19 +38,14 @@ class PlayerViewController: BaseViewController {
     //MARK:- Setup Player
     func setupPlayer() {
         if let url = itemUrl {
-            item = AVPlayerItem(url: url)
             
-            item!.addObserver(self, forKeyPath: PlayerItemState.playbackBufferEmpty.rawValue, options: .new, context: nil)
-            item!.addObserver(self, forKeyPath: PlayerItemState.playbackLikelyToKeepUp.rawValue, options: .new, context: nil)
-            item!.addObserver(self, forKeyPath: PlayerItemState.playbackBufferFull.rawValue, options: .new, context: nil)
+            PlayerController.shared.playItem(at: url)
             
-            player = AVPlayer(playerItem: item)
+            PlayerController.shared.player!.addObserver(self, forKeyPath: #keyPath(AVPlayer.status), options: [.new, .initial], context: nil)
+            PlayerController.shared.player!.addObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.status), options:[.new, .initial], context: nil)
             
-            self.player!.addObserver(self, forKeyPath: #keyPath(AVPlayer.status), options: [.new, .initial], context: nil)
-            self.player!.addObserver(self, forKeyPath: #keyPath(AVPlayer.currentItem.status), options:[.new, .initial], context: nil)
-            
-            NotificationCenter.default.addObserver(self, selector:#selector(newErrorLogEntry(_:)), name: .AVPlayerItemNewErrorLogEntry, object: player!.currentItem)
-            NotificationCenter.default.addObserver(self, selector:#selector(failedToPlayToEndTime(_:)), name: .AVPlayerItemFailedToPlayToEndTime, object: player!.currentItem)
+            NotificationCenter.default.addObserver(self, selector:#selector(newErrorLogEntry(_:)), name: .AVPlayerItemNewErrorLogEntry, object: PlayerController.shared.player!.currentItem)
+            NotificationCenter.default.addObserver(self, selector:#selector(failedToPlayToEndTime(_:)), name: .AVPlayerItemFailedToPlayToEndTime, object: PlayerController.shared.player!.currentItem)
         } else {
             playButton.isEnabled = false
         }
@@ -76,24 +69,10 @@ class PlayerViewController: BaseViewController {
             if newStatus == .failed {
                 showDialog(title: "Error", actionTitle: "Okay", message:ErrorMessages.fileError)
                 playButton.isEnabled = false
-                indicator.isHidden = true
-                debugPrint("Error: \(String(describing: self.player?.currentItem?.error?.localizedDescription)), error: \(String(describing: self.player?.currentItem?.error))")
-            }
-        }
-        
-        if object is AVPlayerItem {
-            switch keyPath {
-            case PlayerItemState.playbackBufferEmpty.rawValue:
                 indicator.isHidden = false
-                break
-            case PlayerItemState.playbackLikelyToKeepUp.rawValue:
+                debugPrint("Error: \(String(describing: PlayerController.shared.player?.currentItem?.error?.localizedDescription)), error: \(String(describing: PlayerController.shared.player?.currentItem?.error))")
+            } else if newStatus == .readyToPlay {
                 indicator.isHidden = true
-                break
-            case PlayerItemState.playbackBufferFull.rawValue:
-                indicator.isHidden = true
-                break
-            default:
-                break
             }
         }
     }
@@ -118,11 +97,11 @@ class PlayerViewController: BaseViewController {
 
     //MARK:- IBActions
     @IBAction func playTapped(_ sender: UIButton) {
-        if player?.rate == 0 {
-            player!.play()
+        if PlayerController.shared.player!.rate == 0 {
+            PlayerController.shared.player!.play()
             playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         } else {
-            player!.pause()
+            PlayerController.shared.player!.pause()
             playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
         }
     }
